@@ -1,0 +1,42 @@
+{% extends 'formacoes/base.html' %} 
+{% load static %}
+
+{% block content %}
+<header class="masthead bg-primary text-white text-center">
+  <div class="container d-flex align-items-center flex-column">
+    
+    <!-- Masthead Heading-->
+    <h1 class="masthead-heading text-uppercase mb-0">
+      {% if ativa %} Formações Ativas {% else %} Formações passadas {% endif %}
+    </h1>
+    <!-- Icon Divider-->
+    <div class="divider-custom divider-light">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+    </div>
+    <!-- Masthead Subheading-->
+    <p class="masthead-subheading font-weight-light mb-0">
+      <div class="content">
+      {% for f in formacoes %}
+      <div class="card" style="color: #000">
+        <div class="card-body">
+          <div class="card-header">
+
+            <h5 class="card-title">{{f.tematica}}</h5>
+          </div>
+          <p class="card-text">Com {{f.responsavel}}</p>
+          <p class="card-text">{{f.data}}</p>
+          <p class="card-text">C/H de {{f.carga}} horas</p>
+          <p class="card-text"><a href={{f.url}} target="_blank" class="btn btn-primary">Link da formação</a></p>
+          <p class="card-text"><a href={{f.presenca}} target="_blank" class="btn btn-success">Link de presença</a></p>
+          <div class="card-footer">para {{f.publico}}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    </p>
+    
+  </div>
+</header>
+{% endblock %}
